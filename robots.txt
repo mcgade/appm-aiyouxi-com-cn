@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mcgade.github.io/appm-aiyouxi-com-cn/sitemap.xml

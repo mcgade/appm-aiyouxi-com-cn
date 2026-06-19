@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 平台介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbfbfb;
+      color: #1e2a3a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.25rem;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* 主视觉区 – 窄标题 + 轻量分割 */
+    .hero {
+      padding: 3.2rem 0 2.4rem;
+      border-bottom: 1px solid #eaeef2;
+    }
+
+    .hero h1 {
+      font-size: 2.0rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: #0d1b2a;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #536878;
+      max-width: 500px;
+    }
+
+    /* 用途卡片 — 三列简洁网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 20, 30, 0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 20, 30, 0.04);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 520;
+      margin-bottom: 0.4rem;
+      color: #1a2d3c;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #4a5d6e;
+    }
+
+    /* 适合人群 – 紧凑标签组 */
+    .tag-section {
+      margin: 2.8rem 0 2.2rem;
+    }
+
+    .tag-section h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+      color: #1e2a3a;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tag {
+      background: #edf2f7;
+      color: #1f3a4b;
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 自然链接段落 + 简介 */
+    .info-block {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 1.6rem 1.5rem;
+      margin: 2.4rem 0 2rem;
+    }
+
+    .info-block p {
+      margin-bottom: 0.9rem;
+    }
+
+    .info-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #1a5a7a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1a5a7a;
+    }
+
+    /* FAQ 摘要 — 极简列表 */
+    .faq-mini {
+      margin: 2.8rem 0 2rem;
+      border-top: 1px solid #e3e9ef;
+      padding-top: 2rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #173242;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      font-size: 0.92rem;
+      color: #1c2f3e;
+    }
+
+    .faq-item .a {
+      font-size: 0.88rem;
+      color: #536878;
+      margin-top: 0.15rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e3e9ef;
+      margin: 2rem 0;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: #708090;
+      text-align: left;
+      padding: 1rem 0 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+      <h1>爱游戏 · 发现你的游戏落脚点</h1>
+      <div class="sub">
+        一个围绕游戏内容、社区与工具的信息型平台。不评判好坏，只帮你更快找到想玩的方向。
+      </div>
+    </div>
+
+    <!-- 用途卡片 (信息卡片式) -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>游戏库速览</h3>
+        <p>分类收录热门及小众游戏，每款附带基础信息与玩家简评，方便横向比较。</p>
+      </div>
+      <div class="card">
+        <h3>动态与资讯</h3>
+        <p>版本更新、活动预告、行业短讯，以简短条目呈现，降低信息过载感。</p>
+      </div>
+      <div class="card">
+        <h3>社区参考</h3>
+        <p>玩家讨论区与推荐列表，浏览他人真实体验，辅助你的选择判断。</p>
+      </div>
+    </div>
+
+    <!-- 适合人群（标签组） -->
+    <div class="tag-section">
+      <h2>适合哪些人</h2>
+      <div class="tag-list">
+        <span class="tag">休闲玩家</span>
+        <span class="tag">寻找新游的人</span>
+        <span class="tag">游戏资讯读者</span>
+        <span class="tag">偏好轻量参考</span>
+        <span class="tag">关注移动游戏</span>
+        <span class="tag">想了解社区风向</span>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 (嵌入核心链接) -->
+    <div class="info-block">
+      <p>
+        如果你正在找一个能快速浏览游戏内容、又不会被过度营销打扰的地方，可以试试 
+        <a href="https://appm-aiyouxi.com.cn">爱游戏</a>。它不追求大而全，而是尽量把筛选和浏览的步骤简化。
+      </p>
+      <p>
+        平台上的信息按用途整理，比如查看某款游戏的类型、评价走向，或是了解近期有哪些值得关注的更新。没有强制注册也能浏览大部分内容。
+      </p>
+      <p>
+        需要补充的是，<a href="https://appm-aiyouxi.com.cn">爱游戏</a> 并非官方商店或下载页，它更偏重信息聚合和玩家视角的整理。适合在选购游戏前、或想快速了解一款新作时使用。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h3>常见疑问 · 简要</h3>
+      <div class="faq-item">
+        <div class="q">平台收录哪些类型的游戏？</div>
+        <div class="a">以移动端游戏为主，也覆盖部分跨平台作品，类型包括角色扮演、策略、模拟、休闲等。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">需要注册才能使用吗？</div>
+        <div class="a">浏览公开信息、查看游戏条目和资讯不需要注册。部分社区互动功能可能需登录。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">信息更新频率如何？</div>
+        <div class="a">保持日常更新，重点跟进版本变动与玩家关注度较高的内容。非实时刷新，但足以满足常规参考。</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+      <span>信息卡片式介绍 · 爱游戏 · 简洁专业</span>
+    </div>
+
+  </div>
+</body>
+</html>
