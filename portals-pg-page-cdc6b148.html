@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 PG 的笔记 · 简明说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff3e0 0%, #fde9d8 40%, #f8dcc4 100%);
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.75;
+            color: #2e241e;
+        }
+
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: #fffffffa;
+            border-radius: 28px;
+            box-shadow: 0 12px 32px rgba(140, 80, 50, 0.08), 0 4px 12px rgba(190, 120, 80, 0.06);
+            padding: 2.8rem 2.5rem;
+            transition: box-shadow 0.25s;
+            backdrop-filter: blur(2px);
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 1rem 0.6rem; }
+            .card { padding: 2rem 1.2rem; border-radius: 20px; }
+        }
+
+        .title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #4d3227;
+            line-height: 1.2;
+            margin-bottom: 0.1rem;
+            border-left: 4px solid #cc8f6b;
+            padding-left: 1rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #8b6a57;
+            margin: 0.5rem 0 2rem 1.2rem;
+            font-style: italic;
+            border-bottom: 1px dashed #e6cfbf;
+            padding-bottom: 0.6rem;
+        }
+
+        .lead {
+            font-size: 1.12rem;
+            background: #fcf6f0;
+            padding: 1.4rem 1.6rem;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            color: #3f2c21;
+            border: 1px solid #eddccf;
+            box-shadow: inset 0 1px 4px rgba(230, 200, 180, 0.3);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 2rem 0 0.75rem 0;
+            color: #5a3a2a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        h2:before {
+            content: '·';
+            font-size: 2rem;
+            line-height: 0;
+            color: #b88264;
+            margin-right: 0.2rem;
+        }
+
+        p {
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .insight-block {
+            background: #f2e9e1;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            border-left: 5px solid #b88264;
+            color: #3a2a1f;
+            font-size: 1rem;
+        }
+
+        .insight-block strong {
+            color: #6a422f;
+        }
+
+        .faq-mini {
+            margin-top: 2.6rem;
+            border-top: 1px solid #e5d3c6;
+            padding-top: 1.8rem;
+        }
+        .faq-mini details {
+            margin-bottom: 1rem;
+            padding: 0.2rem 0.4rem 0.2rem 0.8rem;
+            border-radius: 12px;
+            background: #fcf6f1;
+            border: 1px solid #e7d5c7;
+            transition: background 0.2s;
+        }
+        .faq-mini details[open] {
+            background: #f7eee6;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.7rem 0.2rem;
+            color: #5a3d2e;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .faq-mini summary::before {
+            content: '▸';
+            color: #b88264;
+            margin-right: 0.6rem;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-mini details p {
+            margin: 0.2rem 0 0.8rem 1.6rem;
+            color: #3f2e23;
+        }
+
+        .cta-sentence {
+            margin: 2.4rem 0 0.8rem 0;
+            padding: 1rem 1.2rem;
+            background: #f3e7dd;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px solid #dbbcac;
+        }
+
+        a {
+            color: #7a4f38;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #e2cbbd;
+            padding-bottom: 1px;
+            transition: border-color 0.15s, color 0.15s;
+            border-radius: 0 0 4px 4px;
+        }
+
+        a:hover {
+            color: #4d2b1b;
+            border-bottom-color: #b88264;
+        }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            font-size: 0.9rem;
+            color: #8a6f5e;
+            text-align: center;
+            border-top: 1px solid #e7d6c9;
+            padding-top: 1.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #dcc8ba;
+            margin: 1.2rem 0;
+        }
+
+        .quiet-link {
+            color: #7a5c48;
+            border-bottom: 1px dotted #cbb6a8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1 class="title">PG 主题下的一些整理</h1>
+    <div class="subhead">关于一个关键词背后的具体指向与使用场景</div>
+
+    <div class="lead">
+        PG 这个词在不同语境中有不同解释。这篇文章从最常见、也最常被搜索的一个方向展开——它指的是一套机制、一个入口，以及围绕它所构建的访问方式。下面的内容尽可能客观地说明其定位和主要特点。
+    </div>
+
+    <!-- 正文段落 1 -->
+    <h2>这个关键词指向什么</h2>
+    <p>
+        当用户搜索「PG」并与特定网站关联时，多数情况是指一个整合了多种功能模块的在线平台。它不是一个单一服务，而是一组逻辑和界面的集合。从页面结构来看，它通常包含信息展示、交互操作以及资源跳转等部分。其设计目标是为了让使用者能快速找到需要的内容，同时保持较低的认知负担。在中文互联网环境中，这类站点往往被称作“门户式工具页”或“聚合面板”。而本文讨论的 PG 概念，正是这类结构中比较有代表性的一种。
+    </p>
+
+    <!-- 正文段落 2 + 引用语句 -->
+    <h2>常见的功能特点</h2>
+    <p>
+        从布局上看，这类页面会优先突出导航和主要入口，而不是堆积大量文本。配色偏向中性或暖色，卡片与分区清晰，减少不必要的动效。功能上，它提供多个跳转目标，每个目标对应特定用途。用户不需要反复切换页面，所有主要操作集中在一处。这种设计的优点是减少决策时间，缺点是如果分类不够清晰，容易让人感到信息过载。因此，合理的分组和提示文字变得比较重要。
+    </p>
+
+    <div class="insight-block">
+        <strong>一点说明：</strong> 不管页面形式如何变化，其核心逻辑始终是“用最少的步骤到达目标”。好的 PG 类页面并不是功能越多越好，而是平衡了覆盖率和清晰度。
+    </div>
+
+    <!-- 正文段落 3：场景举例 -->
+    <h2>实际使用场景</h2>
+    <p>
+        假设你有一个常去的资源列表，每次都要从书签里翻找。而 PG 类页面做的就是把这些琐碎的链接整理到一张卡片式的界面上，按类型或频率排列。比如：资讯更新、常用工具、社区讨论、存档文件等等。你只需要记住一个地址，就能到达所有相关的子页面。对于每天需要处理多条信息流的人来说，这种方式能节省不少时间。当然，前提是维护者定期更新链接的有效性，否则页面反而会变成一个死链接仓库。
+    </p>
+
+    <p>
+        另一个场景是团队内部使用。一个小团队可以把常用后台、文档库、排期表都放到一个 PG 页面上，设置好权限后，成员每天打开这个页面就能开始工作。它相当于一个轻量级的内网门户，但不需要复杂的 IT 配置。
+    </p>
+
+    <!-- 自然嵌入链接的句子 -->
+    <p>
+        如果你想进一步了解这类页面的具体结构和页面组织方式，可以浏览 <a href="https://portals-pg.com">pg官网</a> 看看实际呈现。上面展示的模块划分和导航思路，对想要搭建类似页面的人来说有一定的参考价值。
+    </p>
+
+    <!-- 正文段落 4 + 引用提示 -->
+    <h2>需要注意的点</h2>
+    <p>
+        任何聚合类页面都存在两个潜在问题：一是信息冗余，二是维护滞后。冗余指的是页面塞入太多无关模块，导致核心功能被淹没。滞后则是指链接失效或内容过时，却没有及时清理。建议每隔一段时间对页面进行一次精简，移除点击率低或已经失效的条目。另外，不要为了美观而牺牲可读性，字体大小、对比度和点击区域都要考虑到不同设备。
+    </p>
+
+    <!-- 一个简短提示块 -->
+    <div class="insight-block" style="background:#efe3d9; border-left-color:#a67458;">
+        <strong>提示：</strong> 访问任何 PG 类页面之前，可以先扫一眼它的分区标题。如果前三秒找不到你想要的类别，这个页面的信息架构可能还需要优化。好的页面应该在五秒内让你知道自己该点哪里。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2 style="margin-top:0;">常见疑问简短回答</h2>
+        <details>
+            <summary>PG 页面需要登录才能访问吗？</summary>
+            <p>不一定。很多 PG 页面是完全公开的，只汇总公开信息。部分涉及内部系统的版本才需要身份验证。具体取决于搭建者的设定。</p>
+        </details>
+        <details>
+            <summary>这类页面适合个人使用吗？</summary>
+            <p>适合。你可以用静态页面托管服务（比如 GitHub Pages）搭建只属于自己的启动页，把常去的网站、笔记、待办都放在上面。维护起来也很方便。</p>
+        </details>
+        <details>
+            <summary>移动端体验怎么样？</summary>
+            <p>如果页面使用了响应式设计（比如上面的卡片布局和字体缩放），在手机上阅读和点击基本没有障碍。但前提是按钮和链接有足够大的点击区域（至少 44px 高度）。</p>
+        </details>
+    </div>
+
+    <!-- 访问句 / 结束语 -->
+    <div class="cta-sentence">
+        若你有兴趣参考一个已上线的实例，可以直接前往 <a href="https://portals-pg.com" style="border-bottom-width:3px;">pg官网</a> 浏览。
+    </div>
+
+    <div class="footer-note">
+        · 本文内容基于常见使用场景整理，不构成官方说明 · 最后更新于最近一次编辑 ·
+    </div>
+
+</div>
+
+</body>
+</html>
